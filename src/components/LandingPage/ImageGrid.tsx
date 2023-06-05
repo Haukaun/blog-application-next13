@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ImageGrid() {
   return (
-    <div className="grid grid-cols-2 grid-rows-2 h-screen pt-32 pr-10 pl-10 bg-neutral-700">
+    <div className="grid grid-cols-2 grid-rows-2 h-screen">
       <div className="col-start-1 col-end-2 row-start-1 row-end-3">
         <img
           className="object-cover h-full w-full"
