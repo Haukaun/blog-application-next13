@@ -1,4 +1,7 @@
-import NavBar from "@/components/LandingPage/NavBar";
+"use client";
+
+import React, { useState, useEffect, Suspense } from "react";
+import NavBar from "@/components/Navbar/NavBar";
 import "./globals.css";
 import { Roboto_Mono } from "next/font/google";
 import Providers from "@/components/Providers";
@@ -16,12 +19,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [theme, setTheme] = useState("dark");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
   return (
-    <html lang="en" data-theme="cupcake">
+    <html lang="en" data-theme={theme}>
       <body className={Roboto.className}>
         <Providers>
           <div className="w-custom mx-auto">
-            <NavBar />
+            <NavBar theme={theme} setTheme={setTheme} />
             {children}
             <Footer />
           </div>

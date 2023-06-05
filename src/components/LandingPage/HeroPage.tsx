@@ -21,8 +21,8 @@ export default function HeroPage() {
             <Image
               src="/blog-intro.jpg"
               alt=""
-              width={400}
-              height={400}
+              width={350}
+              height={350}
               className="pt-10"
             />
           </div>

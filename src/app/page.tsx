@@ -1,5 +1,5 @@
 import ImageGrid from "@/components/LandingPage/ImageGrid";
-import NavbarLinks from "@/components/LandingPage/NavbarLinks";
+import NavbarLinks from "@/components/Navbar/NavbarLinks";
 import BlogCardList from "@/components/Blogs/BlogCardList";
 import HeroPage from "@/components/LandingPage/HeroPage";
 
