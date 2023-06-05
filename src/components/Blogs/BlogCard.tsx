@@ -18,6 +18,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, image, description }) => {
           <div className="badge badge-secondary">NEW</div>
         </h1>
         <p>{description}</p>
+
+        <div className="btn btn-primary">Read more</div>
       </div>
     </div>
   );
