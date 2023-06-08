@@ -90,9 +90,10 @@ export default function NavBar({ theme, setTheme }: NavBarProps) {
           <input
             type="checkbox"
             onChange={() =>
-              setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"))
+              setTheme((prevTheme) =>
+                prevTheme === "dark" ? "cupcake" : "dark"
+              )
             }
-            checked={theme === "light"}
           />
 
           {/* sun icon */}
