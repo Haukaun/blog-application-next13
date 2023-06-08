@@ -32,3 +32,35 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Prisma setup Commands:
+
+- Installing prisma to project
+
+```bash
+npm install prisma --save-dev
+```
+
+- Setup for which database provider to use, example postgres.
+
+```bash
+npx prisma init --datasource-provider postgresql
+```
+
+- Run this command to update shema to latest. Before running this you have to set up the correct Database url in the env file.
+
+```bash
+npx prisma migrate dev
+```
+
+- For running database script
+
+```bash
+npx ts-node script.ts
+```
+
+- Setup GUI for database display
+
+```bash
+npx prisma studio
+```
