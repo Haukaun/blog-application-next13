@@ -21,7 +21,12 @@ const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const user = { id: "1", name: "J Smith", email: "test@test.com" };
+        
+        const res = await fetch(`api/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(credentials),
+
         if (user) {
           return user;
         } else {
