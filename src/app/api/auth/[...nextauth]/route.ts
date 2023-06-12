@@ -1,5 +1,4 @@
 import NextAuth from "next-auth/next";
-import GithubProvider from "next-auth/providers/github";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -43,6 +42,15 @@ const authOptions: NextAuthOptions = {
   debug: process.env.NODE_ENV === "development",
   session: {
     strategy: "jwt",
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
+    async session({ session, token }) {
+      session.user = token as any;
+      return session;
+    },
   },
 };
 

@@ -9,7 +9,6 @@ type NavBarProps = {
 
 export default function NavBar({ theme, setTheme }: NavBarProps) {
   const { data: session } = useSession();
-
   return (
     <div className="navbar justify-between flex-wrap">
       <div>
