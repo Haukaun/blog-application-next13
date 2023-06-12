@@ -1,12 +1,11 @@
-import React from "react";
-
-interface BlogCardProps {
+interface Blog {
   title: string;
   image: string;
-  description: string;
+  content: string;
+  pathToBlog: string;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ title, image, description }) => {
+const BlogCard: React.FC<Blog> = ({ title, image, content, pathToBlog }) => {
   return (
     <div className="card shadow-xl">
       <figure>
@@ -17,9 +16,11 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, image, description }) => {
           {title}
           <div className="badge badge-secondary">NEW</div>
         </h1>
-        <p>{description}</p>
+        <p>{content}</p>
 
-        <div className="btn btn-primary">Read more</div>
+        <a href={pathToBlog} className="btn btn-primary">
+          Read more
+        </a>
       </div>
     </div>
   );
