@@ -18,11 +18,6 @@ export async function POST(request: Request) {
 
   if (user && (await bcrypt.compare(body.password, user.password))) {
     const { password, ...userWithoutPass } = user;
-    const accessToken = signJwtAccessToken(userWithoutPass);
-    const result = {
-      ...userWithoutPass,
-      accessToken,
-    };
-    return new Response(JSON.stringify(result));
+    return new Response(JSON.stringify(userWithoutPass));
   } else return new Response(JSON.stringify(null));
 }

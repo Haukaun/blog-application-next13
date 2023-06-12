@@ -11,7 +11,7 @@ const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [
     CredentialsProvider({
-      name: "Sing in",
+      name: "Credentials",
       credentials: {
         username: {
           label: "Email",
@@ -21,11 +21,16 @@ const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        
-        const res = await fetch(`api/login`, {
+        const res = await fetch("http://localhost:3000/api/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(credentials),
+          body: JSON.stringify({
+            username: credentials?.username,
+            password: credentials?.password,
+          }),
+        });
+
+        const user = await res.json();
 
         if (user) {
           return user;
@@ -34,12 +39,6 @@ const authOptions: NextAuthOptions = {
         }
       },
     }),
-
-    GithubProvider({
-      clientId: process.env.GITHUB_ID ?? "",
-      clientSecret: process.env.GITHUB_SECRET ?? "",
-    }),
-    // ...add more providers here
   ],
   debug: process.env.NODE_ENV === "development",
   session: {
