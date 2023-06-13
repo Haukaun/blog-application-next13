@@ -17,7 +17,7 @@ export async function GET(
     );
   }
 
-  const getBlogPostByUser = await prisma.blogPost.findMany({
+  const getBlogPostsByUser = await prisma.blogPost.findMany({
     where: {
       userId: +params.id,
     },
@@ -31,5 +31,5 @@ export async function GET(
     },
   });
 
-  return new Response(JSON.stringify(getBlogPostByUser));
+  return new Response(JSON.stringify(getBlogPostsByUser));
 }

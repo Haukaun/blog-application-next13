@@ -1,6 +1,8 @@
 "use client";
 
-import BlogCardLong from "@/components/Blogs/Admin/BlogCardLong";
+import BlogCardLongList from "@/components/Blogs/Admin/BlogCardLongList";
+import { BlogModal } from "@/components/Blogs/Admin/modal/BlogModal";
+
 import { useSession } from "next-auth/react";
 import React from "react";
 
@@ -11,21 +13,9 @@ export default function page() {
   const { data: session } = useSession();
   if (session?.user.role === "ADMIN") {
     return (
-      <div>
-        <BlogCardLong
-          title="New movie is released!"
-          image="/testimage.jpeg"
-          content="Click the button to watch on Jetflix app."
-          pathToEditBlog="/"
-          published={false}
-        />
-        <BlogCardLong
-          title="New movie is released!"
-          image="/Blog-intro.jpg"
-          content="Click the button to watch on Jetflix app."
-          pathToEditBlog="/"
-          published={false}
-        />
+      <div className="flex justify-center flex-col gap-3">
+        <BlogCardLongList />
+        <BlogModal />
       </div>
     );
   } else {

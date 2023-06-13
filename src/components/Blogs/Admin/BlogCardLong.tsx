@@ -1,16 +1,15 @@
-interface BlogPostProps {
-  title: string;
-  image: string;
-  content: string;
-  pathToEditBlog: string;
-  published: boolean;
-}
+import { BlogPost } from "@/lib/types/Interfaces";
 
-const BlogCard: React.FC<BlogPostProps> = ({
+type BlogCardLongProps = Pick<
+  BlogPost,
+  "id" | "title" | "image" | "content" | "published"
+>;
+
+const BlogCardLong: React.FC<BlogCardLongProps> = ({
+  id,
   title,
   image,
   content,
-  pathToEditBlog,
   published,
 }) => {
   return (
@@ -30,11 +29,13 @@ const BlogCard: React.FC<BlogPostProps> = ({
 
         <div className="card-actions justify-end">
           <h1>{published}</h1>
-          <a className="btn btn-primary">Edit</a>
+          <a href={"/" + id} className="btn btn-primary">
+            Edit
+          </a>
         </div>
       </div>
     </div>
   );
 };
 
-export default BlogCard;
+export default BlogCardLong;
