@@ -1,4 +1,6 @@
 import { BlogPost } from "@/lib/types/Interfaces";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 type BlogCardLongProps = Pick<
   BlogPost,
@@ -12,6 +14,26 @@ const BlogCardLong: React.FC<BlogCardLongProps> = ({
   content,
   published,
 }) => {
+  const { data: session } = useSession();
+  const [isDeleted, setIsDeleted] = useState(false);
+
+  async function deleteBlogPost() {
+    const res = await fetch("/api/blogPost/delete/" + id, {
+      method: "DELETE",
+      headers: {
+        authorization: ` ${session?.user.accessToken}`,
+      },
+    }); // Replace with your API endpoint if it's different
+    if (!res.ok) {
+      throw new Error(res.statusText);
+    } else {
+      setIsDeleted(true);
+      return await res.json();
+    }
+  }
+
+  if (isDeleted) return null;
+
   return (
     <div className="card card-side bg-base-100 shadow-xl">
       <figure className="relative">
@@ -28,7 +50,22 @@ const BlogCardLong: React.FC<BlogCardLongProps> = ({
         </div>
 
         <div className="card-actions justify-end">
-          <h1>{published}</h1>
+          <button onClick={deleteBlogPost} className="btn btn-error">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 2a9 9 0 100 18 9 9 0 000-18zm0 14a5 5 0 100-10 5 5 0 000 10z"
+              />
+            </svg>
+          </button>
           <a href={"/" + id} className="btn btn-primary">
             Edit
           </a>

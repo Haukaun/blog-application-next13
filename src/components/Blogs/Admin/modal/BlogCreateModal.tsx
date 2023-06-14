@@ -1,6 +1,34 @@
-import React from "react";
+import { useSession } from "next-auth/react";
+import React, { useState } from "react";
 
 export const BlogModal = () => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
+  const { data: session } = useSession();
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    const response = await fetch("/api/blogPost/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: ` ${session?.user.accessToken}`,
+      },
+      body: JSON.stringify({
+        title,
+        content,
+        userId: session?.user.id,
+        image: "/testimage.jpeg",
+      }),
+    });
+
+    if (response.ok) {
+      // handle success
+    } else {
+      // handle error
+    }
+  };
+
   return (
     <div>
       <label
@@ -12,14 +40,12 @@ export const BlogModal = () => {
 
       <input type="checkbox" id="my_modal_6" className="modal-toggle" />
       <div className="modal">
-        <div className="modal-box w-11/12 max-w-5xl h-full flex">
-          <div className="flex-auto">Preview of Blog Here</div>
-          <div className="flex flex-col w-64">
+        <div className="modal-box flex flex-col">
+          <div className="flex flex-col">
             <h3 className="font-bold text-lg">Create a Blog Post</h3>
             <div className="gap-10">
               <form
-                action={"/senddatahere"}
-                method="post"
+                onSubmit={handleSubmit}
                 className="flex flex-col space-y-4 w-full"
               >
                 <label>
@@ -28,6 +54,8 @@ export const BlogModal = () => {
                     type="text"
                     name="title"
                     className="border-2 rounded-md p-2 mt-2 w-full"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                   />
                 </label>
                 <label>
@@ -35,31 +63,15 @@ export const BlogModal = () => {
                   <textarea
                     name="content"
                     className="border-2 rounded-md p-2 mt-2 w-full"
-                  />
-                </label>
-                <input type="submit" value="Submit" className="btn" />
-              </form>
-              <div className="divider"></div>
-
-              <h3 className="font-bold text-lg pt-4">BlogPost item</h3>
-              <form
-                action={"/senddatahere"}
-                method="post"
-                className="flex flex-col space-y-4 w-full"
-              >
-                <label>
-                  Item Content:
-                  <input
-                    type="text"
-                    name="item"
-                    className="border-2 rounded-md p-2 mt-2 w-full"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
                   />
                 </label>
                 <input type="submit" value="Submit" className="btn" />
               </form>
             </div>
           </div>
-          <div className="modal-action absolute bottom-3 right-3">
+          <div className="modal-action">
             <label htmlFor="my_modal_6" className="btn">
               Close!
             </label>

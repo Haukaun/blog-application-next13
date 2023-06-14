@@ -6,7 +6,7 @@ import "./globals.css";
 import { Roboto_Mono } from "next/font/google";
 import Providers from "@/components/Providers";
 import Footer from "@/components/LandingPage/Footer";
-import { BlogModal } from "@/components/Blogs/Admin/modal/BlogModal";
+import { BlogModal } from "@/components/Blogs/Admin/modal/BlogCreateModal";
 
 const Roboto = Roboto_Mono({ subsets: ["latin"] });
 
