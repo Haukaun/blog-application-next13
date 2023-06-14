@@ -15,7 +15,7 @@ async function getBlogsByUser(userId: number, accessToken: string) {
     headers: {
       authorization: ` ${accessToken}`,
     },
-  }); // Replace with your API endpoint if it's different
+  });
   if (!res.ok) {
     throw new Error(res.statusText);
   }
