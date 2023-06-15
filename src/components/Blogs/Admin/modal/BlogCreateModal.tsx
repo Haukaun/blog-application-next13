@@ -59,6 +59,7 @@ export const BlogModal = () => {
                   <input
                     type="text"
                     name="title"
+                    required
                     className="border-2 rounded-md p-2 mt-2 w-full"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
@@ -69,6 +70,7 @@ export const BlogModal = () => {
                   <input
                     type="text"
                     name="subTitle"
+                    required
                     className="border-2 rounded-md p-2 mt-2 w-full"
                     value={subTitle}
                     onChange={(e) => setSubTitle(e.target.value)}
@@ -78,6 +80,7 @@ export const BlogModal = () => {
                   Blog Content:
                   <textarea
                     name="content"
+                    required
                     className="border-2 rounded-md p-2 mt-2 w-full h-40"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
