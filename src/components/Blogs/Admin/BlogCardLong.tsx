@@ -18,6 +18,10 @@ const BlogCardLong: React.FC<BlogCardLongProps> = ({
   const [isDeleted, setIsDeleted] = useState(false);
 
   async function deleteBlogPost() {
+    if (!window.confirm("Are you sure you want to delete this blog post?")) {
+      return;
+    }
+
     const res = await fetch("/api/blogPost/delete/" + id, {
       method: "DELETE",
       headers: {
