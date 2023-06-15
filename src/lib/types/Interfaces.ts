@@ -15,6 +15,7 @@ export interface User {
 export interface BlogPost {
   id: number;
   title: string;
+  subTitle: string;
   content: string;
   published: boolean;
   userId: number;
@@ -27,7 +28,9 @@ export interface BlogPost {
 export interface BlogPostItem {
   id: number;
   title: string;
+  subTitle: string;
   content: string;
+  urlPath: string;
   blogpostId: number;
   image: string;
   blogpost: BlogPost;

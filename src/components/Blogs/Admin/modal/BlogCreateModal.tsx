@@ -4,10 +4,13 @@ import React, { useState } from "react";
 export const BlogModal = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [subTitle, setSubTitle] = useState("");
 
   const { data: session } = useSession();
 
   const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
     const response = await fetch("/api/blogPost/create", {
       method: "POST",
       headers: {
@@ -16,6 +19,7 @@ export const BlogModal = () => {
       },
       body: JSON.stringify({
         title,
+        subTitle,
         content,
         userId: session?.user.id,
         image: "/testimage.jpeg",
@@ -42,7 +46,9 @@ export const BlogModal = () => {
       <div className="modal">
         <div className="modal-box flex flex-col">
           <div className="flex flex-col">
-            <h3 className="font-bold text-lg">Create a Blog Post</h3>
+            <h3 className="font-bold text-lg pb-5 underline">
+              Create a Blog Post
+            </h3>
             <div className="gap-10">
               <form
                 onSubmit={handleSubmit}
@@ -59,10 +65,20 @@ export const BlogModal = () => {
                   />
                 </label>
                 <label>
+                  Blog sub-title:
+                  <input
+                    type="text"
+                    name="subTitle"
+                    className="border-2 rounded-md p-2 mt-2 w-full"
+                    value={subTitle}
+                    onChange={(e) => setSubTitle(e.target.value)}
+                  />
+                </label>
+                <label>
                   Blog Content:
                   <textarea
                     name="content"
-                    className="border-2 rounded-md p-2 mt-2 w-full"
+                    className="border-2 rounded-md p-2 mt-2 w-full h-40"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                   />

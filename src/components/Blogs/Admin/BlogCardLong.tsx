@@ -1,17 +1,17 @@
 import { BlogPost } from "@/lib/types/Interfaces";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type BlogCardLongProps = Pick<
   BlogPost,
-  "id" | "title" | "image" | "content" | "published"
+  "id" | "title" | "subTitle" | "image" | "content" | "published"
 >;
 
 const BlogCardLong: React.FC<BlogCardLongProps> = ({
   id,
   title,
   image,
-  content,
+  subTitle,
   published,
 }) => {
   const { data: session } = useSession();
@@ -23,7 +23,7 @@ const BlogCardLong: React.FC<BlogCardLongProps> = ({
       headers: {
         authorization: ` ${session?.user.accessToken}`,
       },
-    }); // Replace with your API endpoint if it's different
+    });
     if (!res.ok) {
       throw new Error(res.statusText);
     } else {
@@ -46,7 +46,7 @@ const BlogCardLong: React.FC<BlogCardLongProps> = ({
       <div className="card-body items-center flex-row">
         <div className="flex-1">
           <h2 className="card-title">{title}</h2>
-          <p>{content}</p>
+          <p>{subTitle}</p>
         </div>
 
         <div className="card-actions justify-end">

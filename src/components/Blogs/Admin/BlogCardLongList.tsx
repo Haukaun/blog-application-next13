@@ -7,7 +7,7 @@ import { BlogPost } from "@/lib/types/Interfaces";
 
 type BlogCardLongProps = Pick<
   BlogPost,
-  "id" | "title" | "image" | "content" | "published"
+  "id" | "title" | "subTitle" | "image" | "content" | "published"
 >;
 
 async function getBlogsByUser(userId: number, accessToken: string) {
@@ -41,6 +41,7 @@ export default function BlogCardList() {
           <BlogCardLong
             id={blog.id}
             title={blog.title}
+            subTitle={blog.subTitle}
             image={blog.image}
             content={blog.content}
             published={blog.published}

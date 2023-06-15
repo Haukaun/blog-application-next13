@@ -3,6 +3,7 @@ import prisma from "@/lib/prisma";
 
 interface RequestBody {
   title: string;
+  subTitle: string;
   content: string;
   userId: number;
   image: string;
@@ -27,6 +28,7 @@ export async function POST(request: Request) {
   const blogPost = await prisma.blogPost.create({
     data: {
       title: body.title,
+      subTitle: body.subTitle,
       content: body.content,
       userId: body.userId,
       image: body.image,
