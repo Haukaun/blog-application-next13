@@ -35,10 +35,7 @@ export const BlogCreateModal = () => {
 
   return (
     <div>
-      <label
-        htmlFor="my_modal_5"
-        className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
-      >
+      <label htmlFor="my_modal_5" className="btn">
         Create new blogpost
       </label>
 
