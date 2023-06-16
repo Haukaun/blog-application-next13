@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 
-export const BlogModal = () => {
+export const BlogCreateModal = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [subTitle, setSubTitle] = useState("");
@@ -36,52 +36,50 @@ export const BlogModal = () => {
   return (
     <div>
       <label
-        htmlFor="my_modal_6"
+        htmlFor="my_modal_5"
         className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg"
       >
         Create new blogpost
       </label>
 
-      <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+      <input type="checkbox" id="my_modal_5" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box flex flex-col">
           <div className="flex flex-col">
-            <h3 className="font-bold text-lg pb-5 underline">
-              Create a Blog Post
-            </h3>
+            <h3 className="font-bold text-lg pb-5">CREATE BLOGPOST</h3>
             <div className="gap-10">
               <form
                 onSubmit={handleSubmit}
                 className="flex flex-col space-y-4 w-full"
               >
                 <label>
-                  Blog Title:
+                  Title:
                   <input
                     type="text"
                     name="title"
                     required
-                    className="border-2 rounded-md p-2 mt-2 w-full"
+                    className="p-2 mt-2 w-full bg-gray-100 text-base-100"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </label>
                 <label>
-                  Blog sub-title:
+                  Sub-title:
                   <input
                     type="text"
                     name="subTitle"
                     required
-                    className="border-2 rounded-md p-2 mt-2 w-full"
+                    className="p-2 mt-2 w-full bg-gray-100 text-base-100"
                     value={subTitle}
                     onChange={(e) => setSubTitle(e.target.value)}
                   />
                 </label>
                 <label>
-                  Blog Content:
+                  Content:
                   <textarea
                     name="content"
                     required
-                    className="border-2 rounded-md p-2 mt-2 w-full h-40"
+                    className=" p-2 mt-2 w-full h-40 bg-gray-100 text-base-100"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                   />
@@ -91,7 +89,7 @@ export const BlogModal = () => {
             </div>
           </div>
           <div className="modal-action">
-            <label htmlFor="my_modal_6" className="btn">
+            <label htmlFor="my_modal_5" className="btn">
               Close!
             </label>
           </div>

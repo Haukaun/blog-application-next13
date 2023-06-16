@@ -1,7 +1,7 @@
 "use client";
 
-import BlogCardLongList from "@/components/Blogs/Admin/BlogCardLongList";
-import { BlogModal } from "@/components/Blogs/Admin/modal/BlogCreateModal";
+import BlogCardLongList from "@/components/Blogs/Admin/card/BlogCardLongList";
+import { BlogCreateModal } from "@/components/Blogs/Admin/modal/BlogCreateModal";
 
 import { useSession } from "next-auth/react";
 import React from "react";
@@ -15,7 +15,7 @@ export default function page() {
     return (
       <div className="flex justify-center flex-col gap-3">
         <BlogCardLongList />
-        <BlogModal />
+        <BlogCreateModal />
       </div>
     );
   } else {

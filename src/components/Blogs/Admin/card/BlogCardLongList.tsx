@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import BlogCardLong from "@/components/Blogs/Admin/BlogCardLong";
+import BlogCardLong from "@/components/Blogs/Admin/card/BlogCardLong";
 import { useSession } from "next-auth/react";
 import { BlogPost } from "@/lib/types/Interfaces";
 
