@@ -3,12 +3,7 @@
 import React, { useEffect, useState } from "react";
 import BlogCardLong from "@/components/Blogs/Admin/card/BlogCardLong";
 import { useSession } from "next-auth/react";
-import { BlogPost } from "@/lib/types/Interfaces";
-
-type BlogCardLongProps = Pick<
-  BlogPost,
-  "id" | "title" | "subTitle" | "image" | "content" | "published"
->;
+import { BlogPost } from "@prisma/client";
 
 async function getBlogsByUser(userId: number, accessToken: string) {
   const res = await fetch("/api/user/" + userId, {
@@ -23,7 +18,7 @@ async function getBlogsByUser(userId: number, accessToken: string) {
 }
 
 export default function BlogCardList() {
-  const [blogs, setBlogs] = useState<BlogCardLongProps[]>([]);
+  const [blogs, setBlogs] = useState<BlogPost[]>([]);
   const { data: session, status } = useSession();
 
   useEffect(() => {
@@ -38,14 +33,7 @@ export default function BlogCardList() {
     <div className="flex flex-col gap-5">
       {blogs.map((blog, index) => (
         <div key={index} className="w-full h-full">
-          <BlogCardLong
-            id={blog.id}
-            title={blog.title}
-            subTitle={blog.subTitle}
-            image={blog.image}
-            content={blog.content}
-            published={blog.published}
-          />
+          <BlogCardLong blogPost={blog} />
         </div>
       ))}
     </div>

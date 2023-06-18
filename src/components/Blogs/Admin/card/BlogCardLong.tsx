@@ -1,21 +1,13 @@
-import { BlogPost } from "@/lib/types/Interfaces";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { BlogEditModal } from "../modal/BlogEditModal";
+import { BlogPost } from "@prisma/client";
 
-type BlogCardLongProps = Pick<
-  BlogPost,
-  "id" | "title" | "subTitle" | "image" | "content" | "published"
->;
+interface Props {
+  blogPost: BlogPost;
+}
 
-const BlogCardLong: React.FC<BlogCardLongProps> = ({
-  id,
-  title,
-  image,
-  content,
-  subTitle,
-  published,
-}) => {
+const BlogCardLong = ({ blogPost }: Props) => {
   const { data: session } = useSession();
   const [isDeleted, setIsDeleted] = useState(false);
 
@@ -24,7 +16,7 @@ const BlogCardLong: React.FC<BlogCardLongProps> = ({
       return;
     }
 
-    const res = await fetch("/api/blogPost/delete/" + id, {
+    const res = await fetch("/api/blogPost/delete/" + blogPost.id, {
       method: "DELETE",
       headers: {
         authorization: ` ${session?.user.accessToken}`,
@@ -45,23 +37,23 @@ const BlogCardLong: React.FC<BlogCardLongProps> = ({
       <figure className="relative">
         <img
           className="w-64 h-32 object-cover object-center"
-          src={image}
+          src={blogPost.image || "/testimage.jpeg"}
           alt="Movie"
         />
       </figure>
       <div className="card-body items-center flex-row">
         <div className="flex-1">
-          <h2 className="card-title">{title}</h2>
-          <p>{subTitle}</p>
+          <h2 className="card-title">{blogPost.title}</h2>
+          <p>{blogPost.subTitle}</p>
         </div>
 
         <div className="card-actions justify-end">
           <BlogEditModal
             blogPost={{
-              id: id,
-              title: title,
-              content: content,
-              subTitle: subTitle,
+              id: blogPost.id,
+              title: blogPost.title,
+              content: blogPost.content,
+              subTitle: blogPost.subTitle,
             }}
           />
           <button onClick={deleteBlogPost} className="btn btn-error">
