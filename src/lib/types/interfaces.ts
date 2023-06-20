@@ -1,5 +1,9 @@
-import { BlogPost } from "@prisma/client";
+import { BlogPost, BlogPostItem } from "@prisma/client";
 
-export interface Props {
+export interface BlogPostProps {
   blogPost: BlogPost;
+}
+
+export interface BlogPostItemProps {
+  blogPostItem: BlogPostItem;
 }
