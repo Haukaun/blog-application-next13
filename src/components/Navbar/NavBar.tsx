@@ -8,9 +8,9 @@ type NavBarProps = {
 export default function NavBar({ theme, setTheme }: NavBarProps) {
   const { data: session } = useSession();
   return (
-    <div className="navbar justify-between flex-wrap">
+    <div className="navbar justify-between flex-wrap flex">
       <div>
-        <div className="flex items-center gap-3 flex-wrap md:items-center">
+        <div className="flex items-center gap-6 flex-wrap w-full flex-1">
           <a className="cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -46,12 +46,12 @@ export default function NavBar({ theme, setTheme }: NavBarProps) {
           </a>
         </div>
       </div>
-      <div>
-        <a className="cursor-pointer">
+      <div className="flex-1 flex justify-center">
+        <a href={"/"} className="cursor-pointer">
           <img src="/logo.svg" alt="brand-image" />
         </a>
       </div>
-      <div className="flex-none">
+      <div className=" flex justify-end">
         {!session && (
           <a
             className="btn btn-ghost btn-sm rounded-btn"
@@ -66,10 +66,6 @@ export default function NavBar({ theme, setTheme }: NavBarProps) {
         )}
         {session?.user && (
           <div className="flex items-center justify-center gap-3">
-            <span className="flex flex-col items-center justify-center gap-0">
-              <small>Signed in as</small>
-              <strong>{session.user.name ?? session.user.name}</strong>
-            </span>
             <a
               href={`/api/auth/signout`}
               className="btn btn-ghost btn-sm rounded-btn"
@@ -87,9 +83,7 @@ export default function NavBar({ theme, setTheme }: NavBarProps) {
           <input
             type="checkbox"
             onChange={() =>
-              setTheme((prevTheme) =>
-                prevTheme === "dark" ? "cupcake" : "dark"
-              )
+              setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"))
             }
           />
 

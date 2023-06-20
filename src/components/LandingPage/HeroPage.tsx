@@ -3,7 +3,7 @@ import React from "react";
 
 export default function HeroPage() {
   return (
-    <div className="min-h-screen">
+    <div className="">
       <div className="hero">
         <div className="hero-content text-center">
           <div className="max-w-[80%] flex justify-center items-center flex-col">
@@ -12,19 +12,10 @@ export default function HeroPage() {
             </h1>
             <p className="py-6">
               Welcome to our blog platform, your gateway to a world of
-              fascinating insights and diverse perspectives. From technology to
-              travel, finance to fashion, delve into a variety of topics penned
-              by our diverse community of bloggers. Start your reading journey
-              with us today.
+              fascinating insights and diverse perspectives. Start your reading
+              journey with us today.
             </p>
-            <button className="btn btn-primary">Dive In</button>
-            <Image
-              src="/blog-intro.jpg"
-              alt=""
-              width={350}
-              height={350}
-              className="pt-10"
-            />
+            <button className="btn btn-primary mb-24">Dive In</button>
           </div>
         </div>
       </div>

@@ -19,19 +19,16 @@ export default function NavbarLinks() {
             Technology
           </a>
           <a href="#" className="hover:bg-gray-400 rounded py-2 px-4 mx-2">
-            Automotive
+            Games
           </a>
           <a href="#" className="hover:bg-gray-400 rounded py-2 px-4 mx-2">
-            Finance
+            Christmas
           </a>
           <a href="#" className="hover:bg-gray-400 rounded py-2 px-4 mx-2">
-            Politics
+            Gifts
           </a>
           <a href="#" className="hover:bg-gray-400 rounded py-2 px-4 mx-2">
-            Culture
-          </a>
-          <a href="#" className="hover:bg-gray-400 rounded py-2 px-4 mx-2">
-            Sports
+            Cloths
           </a>
         </div>
       </div>

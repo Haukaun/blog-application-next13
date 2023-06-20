@@ -30,9 +30,9 @@ export default function BlogCardList() {
   }, [status]);
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 w-full">
       {blogs.map((blog, index) => (
-        <div key={index} className="w-full h-full">
+        <div key={index}>
           <BlogCardLong blogPost={blog} />
         </div>
       ))}

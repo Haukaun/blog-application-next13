@@ -13,7 +13,7 @@ export default function page() {
   const { data: session } = useSession();
   if (session?.user.role === "ADMIN") {
     return (
-      <div className="flex justify-center flex-col gap-3">
+      <div className="flex justify-center items-center flex-col gap-3 w-full">
         <BlogCardLongList />
         <BlogCreateModal />
       </div>

@@ -29,10 +29,12 @@ export default function RootLayout({
     <html lang="en" data-theme={theme}>
       <body className={Roboto.className}>
         <Providers>
-          <div className="w-custom mx-auto">
-            <NavBar theme={theme} setTheme={setTheme} />
-            {children}
-            <Footer />
+          <div className="max-w-6xl m-auto">
+            <div className="flex flex-col justify-center">
+              <NavBar theme={theme} setTheme={setTheme} />
+              {children}
+              <Footer />
+            </div>
           </div>
         </Providers>
       </body>
