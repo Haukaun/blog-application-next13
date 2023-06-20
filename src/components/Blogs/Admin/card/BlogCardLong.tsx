@@ -35,18 +35,20 @@ const BlogCardLong = ({ blogPost }: Props) => {
   return (
     <div className="card card-side bg-base-100 shadow-xl">
       <figure className="relative">
-        <img
-          className="w-64 h-32 object-cover object-center"
-          src={blogPost.image || "/testimage.jpeg"}
-          alt="Movie"
-        />
+        <a href={"/blogPost/" + blogPost.slug}>
+          <img
+            className="w-64 h-32 object-cover object-center"
+            src={blogPost.image || "/testimage.jpeg"}
+            alt="Movie"
+          />
+        </a>
       </figure>
       <div className="card-body items-center flex-row">
-        <div className="flex-1">
+        <div className="flex-1 max-w-4xl">
           <h2 className="card-title">{blogPost.title}</h2>
           <p>{blogPost.subTitle}</p>
         </div>
-
+        <div> </div>
         <div className="card-actions justify-end">
           <BlogEditModal
             blogPost={{
