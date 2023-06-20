@@ -1,13 +1,6 @@
 import { verifyJwt } from "@/lib/jwt";
 import prisma from "@/lib/prisma";
-
-interface RequestBody {
-  title: string;
-  subTitle: string;
-  content: string;
-  userId: number;
-  image: string;
-}
+import { Props } from "@/lib/types/interfaces";
 
 export async function POST(request: Request) {
   const accessToken = request.headers.get("Authorization");
@@ -23,15 +16,16 @@ export async function POST(request: Request) {
     );
   }
 
-  const body: RequestBody = await request.json();
+  const body: Props = await request.json();
 
   const blogPost = await prisma.blogPost.create({
     data: {
-      title: body.title,
-      subTitle: body.subTitle,
-      content: body.content,
-      userId: body.userId,
-      image: body.image,
+      title: body.blogPost.title,
+      subTitle: body.blogPost.subTitle,
+      content: body.blogPost.content,
+      slug: body.blogPost.slug,
+      userId: body.blogPost.userId,
+      image: body.blogPost.image,
     },
     include: {
       user: true,

@@ -5,12 +5,11 @@ export const BlogCreateModal = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [subTitle, setSubTitle] = useState("");
+  const [slug, setSlug] = useState("");
 
   const { data: session } = useSession();
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-
+  const handleSubmit = async () => {
     const response = await fetch("/api/blogPost/create", {
       method: "POST",
       headers: {
@@ -18,11 +17,14 @@ export const BlogCreateModal = () => {
         authorization: ` ${session?.user.accessToken}`,
       },
       body: JSON.stringify({
-        title,
-        subTitle,
-        content,
-        userId: session?.user.id,
-        image: "/testimage.jpeg",
+        blogPost: {
+          title,
+          subTitle,
+          content,
+          slug,
+          userId: session?.user.id,
+          image: "/testimage.jpeg",
+        },
       }),
     });
 
@@ -49,6 +51,17 @@ export const BlogCreateModal = () => {
                 onSubmit={handleSubmit}
                 className="flex flex-col space-y-4 w-full"
               >
+                <label>
+                  Slug:
+                  <input
+                    type="text"
+                    name="slug"
+                    required
+                    className="p-2 mt-2 w-full bg-gray-100 text-base-100"
+                    value={slug}
+                    onChange={(e) => setSlug(e.target.value)}
+                  />
+                </label>
                 <label>
                   Title:
                   <input

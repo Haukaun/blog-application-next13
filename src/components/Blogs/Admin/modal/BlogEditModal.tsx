@@ -6,6 +6,7 @@ type BlogPost = {
   title: string;
   content: string;
   subTitle: string;
+  slug: string;
 };
 
 type BlogModalProps = {
@@ -16,11 +17,12 @@ export const BlogEditModal: React.FC<BlogModalProps> = ({ blogPost }) => {
   const [title, setTitle] = useState(blogPost.title);
   const [content, setContent] = useState(blogPost.content);
   const [subTitle, setSubTitle] = useState(blogPost.subTitle);
+  const [slug, setSlug] = useState(blogPost.slug);
   const [isEditted, setIsEditted] = useState(false);
 
   const { data: session } = useSession();
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  const handleSubmit = async () => {
     const res = await fetch("/api/blogPost/update/" + blogPost.id, {
       method: "PATCH",
       headers: {
@@ -74,6 +76,16 @@ export const BlogEditModal: React.FC<BlogModalProps> = ({ blogPost }) => {
                 onSubmit={handleSubmit}
                 className="flex flex-col space-y-4 w-full"
               >
+                <label>
+                  Slug:
+                  <input
+                    type="text"
+                    name="slug"
+                    className="rounded-md p-2 mt-2 w-full bg-gray-100 text-base-100"
+                    placeholder={slug}
+                    onChange={(e) => setSlug(e.target.value)}
+                  />
+                </label>
                 <label>
                   Title:
                   <input

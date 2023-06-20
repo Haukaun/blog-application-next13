@@ -53,6 +53,7 @@ const BlogCardLong = ({ blogPost }: Props) => {
               id: blogPost.id,
               title: blogPost.title,
               content: blogPost.content,
+              slug: blogPost.slug,
               subTitle: blogPost.subTitle,
             }}
           />

@@ -1,18 +1,12 @@
 import { verifyJwt } from "@/lib/jwt";
 import prisma from "@/lib/prisma";
-
-interface RequestBody {
-  title: string;
-  subTitle: string;
-  content: string;
-  //image: string;
-}
+import { Props } from "@/lib/types/interfaces";
 
 export async function PATCH(
   request: Request,
   { params }: { params: { id: number } }
 ) {
-  const body: RequestBody = await request.json();
+  const body: Props = await request.json();
 
   const accessToken = request.headers.get("authorization");
 
@@ -32,9 +26,9 @@ export async function PATCH(
       id: +params.id,
     },
     data: {
-      title: body.title,
-      subTitle: body.subTitle,
-      content: body.content,
+      title: body.blogPost.title,
+      subTitle: body.blogPost.subTitle,
+      content: body.blogPost.content,
     },
   });
 
