@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
-import { BlogPost } from "@prisma/client";
 
 async function getThreeBlogs() {
   const res = await fetch("/api/blogPost/getThreeBlogs"); // Replace with your API endpoint if it's different

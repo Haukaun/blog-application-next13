@@ -1,5 +1,3 @@
-import { BlogPost } from "@prisma/client";
-
 interface BlogCardProps {
   blogPost: BlogPost;
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import BlogCardLongList from "@/components/admin/card/BlogCardLongList";
+import BlogCardLongList from "@/components/admin/blogCardAdmin/BlogCardLongList";
 import { BlogCreateModal } from "@/components/admin/modal/BlogCreateModal";
 
 import { useSession } from "next-auth/react";
