@@ -30,7 +30,7 @@ export default function RootLayout({
       <body className={Roboto.className}>
         <Providers>
           <div className="max-w-6xl m-auto">
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-center mx-10">
               <NavBar theme={theme} setTheme={setTheme} />
               {children}
               <Footer />

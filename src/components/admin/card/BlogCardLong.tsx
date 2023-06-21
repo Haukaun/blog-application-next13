@@ -50,7 +50,7 @@ const BlogCardLong = ({ blogPost }: Props) => {
           <p>{blogPost.subTitle}</p>
         </div>
         <div className="card-actions justify-end">
-          <BlogItemCreateModal />
+          <BlogItemCreateModal blogPostId={blogPost.id} />
           <BlogEditModal
             blogPost={{
               id: blogPost.id,

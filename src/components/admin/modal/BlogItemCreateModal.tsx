@@ -1,11 +1,15 @@
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 
-export const BlogItemCreateModal = ({ blogPostId }) => {
+interface Props {
+  blogPostId: number;
+}
+
+export const BlogItemCreateModal = ({ blogPostId }: Props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [subTitle, setSubTitle] = useState("");
-  const [link, setLink] = useState("");
+  const [urlPath, setUrlPath] = useState("");
 
   const { data: session } = useSession();
 
@@ -21,8 +25,8 @@ export const BlogItemCreateModal = ({ blogPostId }) => {
           title,
           subTitle,
           content,
-          link,
-          blogPostId,
+          blogpostId: blogPostId,
+          urlPath,
           userId: session?.user.id,
           image: "/testimage.jpeg",
         },
@@ -104,8 +108,8 @@ export const BlogItemCreateModal = ({ blogPostId }) => {
                     name="title"
                     required
                     className="p-2 mt-2 w-full bg-gray-100 text-base-100"
-                    value={link}
-                    onChange={(e) => setLink(e.target.value)}
+                    value={urlPath}
+                    onChange={(e) => setUrlPath(e.target.value)}
                   />
                 </label>
                 <input type="submit" value="Submit" className="btn" />

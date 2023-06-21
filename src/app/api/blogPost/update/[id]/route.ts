@@ -1,12 +1,12 @@
 import { verifyJwt } from "@/lib/jwt";
 import prisma from "@/lib/prisma";
-import { Props } from "@/lib/types/interfaces";
+import { BlogPostProps } from "@/lib/types/interfaces";
 
 export async function PATCH(
   request: Request,
   { params }: { params: { id: number } }
 ) {
-  const body: Props = await request.json();
+  const body: BlogPostProps = await request.json();
 
   const accessToken = request.headers.get("authorization");
 

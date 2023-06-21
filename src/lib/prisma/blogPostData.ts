@@ -1,5 +1,20 @@
 import prisma from "@/lib/prisma";
 
+///This lib is more for tesing purposes, but it can be used to get data from the database.
+///Using getallposts and getpostbyslug in the blogPost/[slug].tsx file.
+
+export async function getPostsByUser(userId: number) {
+  return await prisma.blogPost.findMany({
+    where: {
+      userId: userId,
+    },
+    include: {
+      user: true,
+      items: true,
+    },
+  });
+}
+
 export async function getAllPosts() {
   return await prisma.blogPost.findMany();
 }
