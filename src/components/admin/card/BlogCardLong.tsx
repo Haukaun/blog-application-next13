@@ -1,8 +1,8 @@
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { BlogEditModal } from "../modal/BlogEditModal";
-import { BlogPost } from "@prisma/client";
 import { BlogItemCreateModal } from "../modal/BlogItemCreateModal";
+import { BlogItemOverviewModal } from "../modal/BlogItemOverviewModal";
 
 interface Props {
   blogPost: BlogPost;
@@ -50,6 +50,7 @@ const BlogCardLong = ({ blogPost }: Props) => {
           <p>{blogPost.subTitle}</p>
         </div>
         <div className="card-actions justify-end">
+          <BlogItemOverviewModal blogItemsCount={blogPost.items.length} />
           <BlogItemCreateModal blogPostId={blogPost.id} />
           <BlogEditModal
             blogPost={{

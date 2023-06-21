@@ -1,9 +1,22 @@
-import { BlogPost, BlogPostItem } from "@prisma/client";
-
-export interface BlogPostProps {
-  blogPost: BlogPost;
+interface BlogPostItem {
+  id: number;
+  title: string;
+  content: string;
+  blogpostId: number;
+  image: string | null;
+  subTitle: string;
+  urlPath: string;
 }
 
-export interface BlogPostItemProps {
-  blogPostItem: BlogPostItem;
+interface BlogPost {
+  id: number;
+  title: string;
+  content: string;
+  published: boolean;
+  slug: string;
+  userId: number;
+  createdAt: Date;
+  image: string | null;
+  subTitle: string;
+  items: BlogPostItem[]; // Add this line
 }
