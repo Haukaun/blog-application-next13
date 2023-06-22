@@ -1,10 +1,15 @@
-import prisma from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 
-export async function GET({ params }: { params: { postId: number } }) {
-  const blogPostItem = await prisma.blogPostItem.findMany({
+///Get all items by blogPostId
+export async function GET(
+  request: Request,
+  { params }: { params: { id: number } }
+) {
+  const blogPostItems = await prisma.blogPostItem.findMany({
     where: {
-      blogpostId: +params.postId,
+      blogpostId: +params.id,
     },
   });
-  return new Response(JSON.stringify(blogPostItem));
+
+  return new Response(JSON.stringify(blogPostItems));
 }
