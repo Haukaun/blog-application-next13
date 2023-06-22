@@ -2,7 +2,6 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { BlogEditModal } from "../modal/BlogEditModal";
 import { BlogItemCreateModal } from "../modal/BlogItemCreateModal";
-import { BlogItemOverviewModal } from "../modal/BlogItemOverviewModal";
 
 interface Props {
   blogPost: BlogPost;
@@ -50,7 +49,9 @@ const BlogCardLong = ({ blogPost }: Props) => {
           <p>{blogPost.subTitle}</p>
         </div>
         <div className="card-actions justify-end">
-          <BlogItemOverviewModal blogPost={blogPost} />
+          <a href={"/admin/blogItems/" + blogPost.id} className="btn">
+            Blog Items: {blogPost.items.length}
+          </a>
           <BlogItemCreateModal blogPostId={blogPost.id} />
           <BlogEditModal
             blogPost={{
