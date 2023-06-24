@@ -7,6 +7,7 @@ interface Props {
     slug: string;
   };
 }
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const blogPost = await getPostBySlug(params.slug);
   if (!blogPost)

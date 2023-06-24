@@ -49,7 +49,7 @@ const BlogCardLong = ({ blogPost }: Props) => {
           <p>{blogPost.subTitle}</p>
         </div>
         <div className="card-actions justify-end">
-          <a href={"/admin/blogItems/" + blogPost.slug} className="btn">
+          <a href={"/admin/blogItems/" + blogPost.id} className="btn">
             Blog Items: {blogPost.items.length}
           </a>
           <BlogItemCreateModal blogPostId={blogPost.id} />

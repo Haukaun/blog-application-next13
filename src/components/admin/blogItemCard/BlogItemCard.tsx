@@ -37,7 +37,7 @@ export default function BlogItemCard({ blogPostItem }: Props) {
   if (isDeleted) return null;
 
   return (
-    <div className="card card-side bg-base-100 shadow-xl">
+    <div className="card card-side bg-base-100 shadow-xl w-full">
       <figure className="relative">
         <img
           className="w-64 h-32 object-cover object-center"
