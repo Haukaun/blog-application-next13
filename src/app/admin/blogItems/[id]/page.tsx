@@ -1,5 +1,6 @@
 "use client";
 import BlogItemCard from "@/components/admin/blogItemCard/BlogItemCard";
+import { BlogItemCreateModal } from "@/components/admin/modal/BlogItemCreateModal";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 
@@ -13,11 +14,8 @@ const BlogPostItemPage = async ({ params }: Props) => {
   const [blogItems, setBlogItems] = useState<BlogPostItem[]>([]);
   const { data: session } = useSession();
 
-  console.log(blogItems);
-
   async function getBlogItemsByBlogId(blogPostId: number) {
     const res = await fetch("/api/blogPost/blogPostItem/" + blogPostId);
-    console.log(blogPostId);
     if (!res.ok) {
       throw new Error(res.statusText);
     }
@@ -34,11 +32,13 @@ const BlogPostItemPage = async ({ params }: Props) => {
     };
   }, [params.id]);
 
-  if (blogItems === null)
+  if (blogItems.length === 0)
     return (
       <div className="flex items-center justify-center flex-col">
         <img src="/sad404.ffc1ba45.svg" alt="" />
-        <div className="text-4xl font-color-100 pb-32">404 PAGE NOT FOUND</div>
+        <div className="text-4xl font-color-100 pb-32">
+          BLOG-ITEMS NOT FOUND
+        </div>
       </div>
     );
 
