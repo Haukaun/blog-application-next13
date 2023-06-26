@@ -1,41 +1,38 @@
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 
-type BlogPost = {
-  id: number;
-  title: string;
-  content: string;
-  subTitle: string;
-  slug: string;
+type BlogItemModalProps = {
+  blogPostItem: BlogPostItem;
 };
 
-type BlogModalProps = {
-  blogPost: BlogPost;
-};
-
-export const BlogEditModal: React.FC<BlogModalProps> = ({ blogPost }) => {
-  const [title, setTitle] = useState(blogPost.title);
-  const [content, setContent] = useState(blogPost.content);
-  const [subTitle, setSubTitle] = useState(blogPost.subTitle);
+export const BlogItemEditModal: React.FC<BlogItemModalProps> = ({
+  blogPostItem,
+}) => {
+  const [title, setTitle] = useState(blogPostItem.title);
+  const [content, setContent] = useState(blogPostItem.content);
+  const [subTitle, setSubTitle] = useState(blogPostItem.subTitle);
+  const [url, setUrl] = useState(blogPostItem.urlPath);
   const [isEditted, setIsEditted] = useState(false);
-
-  console.log(blogPost.id);
 
   const { data: session } = useSession();
 
   const handleSubmit = async () => {
-    const res = await fetch("/api/blogPost/update/" + blogPost.id, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: ` ${session?.user.accessToken}`,
-      },
-      body: JSON.stringify({
-        title,
-        subTitle,
-        content,
-      }),
-    });
+    const res = await fetch(
+      "/api/blogPost/blogPostItem/update/" + blogPostItem.id,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: ` ${session?.user.accessToken}`,
+        },
+        body: JSON.stringify({
+          title,
+          subTitle,
+          content,
+          url,
+        }),
+      }
+    );
 
     if (!res.ok) {
       throw new Error(res.statusText);
@@ -71,7 +68,7 @@ export const BlogEditModal: React.FC<BlogModalProps> = ({ blogPost }) => {
       <div className="modal">
         <div className="modal-box flex flex-col">
           <div className="flex flex-col">
-            <h3 className="font-bold text-lg pb-5">UPDATE BLOGPOST</h3>
+            <h3 className="font-bold text-lg pb-5">UPDATE BLOGPOSTITEM</h3>
             <div className="gap-10">
               <form
                 onSubmit={handleSubmit}
@@ -104,6 +101,15 @@ export const BlogEditModal: React.FC<BlogModalProps> = ({ blogPost }) => {
                     className="rounded-md p-2 mt-2 w-full h-40 bg-gray-100 text-base-100"
                     placeholder={content}
                     onChange={(e) => setContent(e.target.value)}
+                  />
+                </label>
+                <label>
+                  Url Path:
+                  <textarea
+                    name="content"
+                    className="rounded-md p-2 mt-2 w-full h-40 bg-gray-100 text-base-100"
+                    placeholder={url}
+                    onChange={(e) => setUrl(e.target.value)}
                   />
                 </label>
                 <input type="submit" value="Submit" className="btn" />

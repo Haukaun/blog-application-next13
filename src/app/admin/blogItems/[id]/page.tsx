@@ -45,7 +45,6 @@ const BlogPostItemPage = async ({ params }: Props) => {
   if (session?.user.role === "ADMIN") {
     return (
       <div className="flex justify-center items-center flex-col gap-3 w-full">
-        {/*Make list comp and item card comp*/}
         <h1>Blog Items</h1>
         {blogItems.map((blogItem) => (
           <BlogItemCard key={blogItem.id} blogPostItem={blogItem} />

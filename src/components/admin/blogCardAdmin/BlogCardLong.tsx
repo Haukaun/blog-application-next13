@@ -48,11 +48,13 @@ const BlogCardLong = ({ blogPost }: Props) => {
           <h2 className="card-title">{blogPost.title}</h2>
           <p>{blogPost.subTitle}</p>
         </div>
-        <div className="card-actions justify-end">
-          <a href={"/admin/blogItems/" + blogPost.id} className="btn">
-            Items: {blogPost.items.length}
-          </a>
-          <BlogItemCreateModal blogPostId={blogPost.id} />
+        <div className="card-actions justify-end items-center">
+          <div className="flex gap-2 border rounded p-1">
+            <a href={"/admin/blogItems/" + blogPost.id} className="btn">
+              Items: {blogPost.items.length}
+            </a>
+            <BlogItemCreateModal blogPostId={blogPost.id} />
+          </div>
           <BlogEditModal
             blogPost={{
               id: blogPost.id,
