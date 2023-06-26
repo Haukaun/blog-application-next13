@@ -42,12 +42,10 @@ const BlogPostItemPage = async ({ params }: Props) => {
   if (session?.user.role === "ADMIN") {
     return (
       <div className="flex justify-center items-center flex-col gap-3 w-full">
-        <div className="justify-between items-center">
-          <a href="/admin" className="hover:text-base-300">
-            Go back to Admin panel
-          </a>
-          <h1>Blog Items</h1>
-        </div>
+        <a href="/admin" className="hover:text-base-300 underline">
+          {"<- back to Admin panel"}
+        </a>
+        <h1>Blog Items</h1>
         {blogItems.map((blogItem) => (
           <BlogItemCard key={blogItem.id} blogPostItem={blogItem} />
         ))}
