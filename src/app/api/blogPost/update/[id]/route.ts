@@ -25,6 +25,7 @@ export async function PATCH(
       id: +params.id,
     },
     data: {
+      slug: body.slug,
       title: body.title,
       subTitle: body.subTitle,
       content: body.content,
