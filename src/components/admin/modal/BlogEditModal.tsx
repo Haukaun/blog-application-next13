@@ -19,7 +19,7 @@ export const BlogEditModal: React.FC<BlogModalProps> = ({ blogPost }) => {
   const [subTitle, setSubTitle] = useState(blogPost.subTitle);
   const [isEditted, setIsEditted] = useState(false);
 
-  console.log(blogPost.id);
+  const modalId = `my_blogpost_modal_${blogPost.id}`;
 
   const { data: session } = useSession();
 
@@ -50,7 +50,7 @@ export const BlogEditModal: React.FC<BlogModalProps> = ({ blogPost }) => {
 
   return (
     <div>
-      <label htmlFor="my_modal_6" className="btn">
+      <label htmlFor={modalId} className="btn">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -67,7 +67,7 @@ export const BlogEditModal: React.FC<BlogModalProps> = ({ blogPost }) => {
         </svg>
       </label>
 
-      <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+      <input type="checkbox" id={modalId} className="modal-toggle" />
       <div className="modal">
         <div className="modal-box flex flex-col">
           <div className="flex flex-col">
@@ -111,7 +111,7 @@ export const BlogEditModal: React.FC<BlogModalProps> = ({ blogPost }) => {
             </div>
           </div>
           <div className="modal-action">
-            <label htmlFor="my_modal_6" className="btn">
+            <label htmlFor={modalId} className="btn">
               Close!
             </label>
           </div>
