@@ -20,7 +20,7 @@ export const BlogEditModal: React.FC<BlogModalProps> = ({ blogPost }) => {
   const [slug, setSlug] = useState(blogPost.slug);
   const [isEditted, setIsEditted] = useState(false);
 
-  const modalId = `my_blogpost_modal_${blogPost.slug}`;
+  const modalId = `my_blogpost_modal_${blogPost.id}`;
 
   const { data: session } = useSession();
 

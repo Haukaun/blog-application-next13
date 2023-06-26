@@ -1,6 +1,5 @@
 "use client";
 import BlogItemCard from "@/components/admin/blogItemCard/BlogItemCard";
-import { BlogItemCreateModal } from "@/components/admin/modal/BlogItemCreateModal";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 
@@ -23,16 +22,14 @@ const BlogPostItemPage = async ({ params }: Props) => {
   }
 
   useEffect(() => {
-    getBlogItemsByBlogId(params.id)
-      .then((blogItems) => setBlogItems(blogItems))
-      .catch((err) => console.error(err));
+    if (params?.id) {
+      getBlogItemsByBlogId(params?.id)
+        .then((blogItems) => setBlogItems(blogItems))
+        .catch((err) => console.error(err));
+    }
+  }, [params?.id]);
 
-    return () => {
-      setBlogItems([]);
-    };
-  }, [params.id]);
-
-  if (blogItems.length === 0)
+  if (blogItems.length === 1)
     return (
       <div className="flex items-center justify-center flex-col">
         <img src="/sad404.ffc1ba45.svg" alt="" />
@@ -45,7 +42,12 @@ const BlogPostItemPage = async ({ params }: Props) => {
   if (session?.user.role === "ADMIN") {
     return (
       <div className="flex justify-center items-center flex-col gap-3 w-full">
-        <h1>Blog Items</h1>
+        <div className="justify-between items-center">
+          <a href="/admin" className="hover:text-base-300">
+            Go back to Admin panel
+          </a>
+          <h1>Blog Items</h1>
+        </div>
         {blogItems.map((blogItem) => (
           <BlogItemCard key={blogItem.id} blogPostItem={blogItem} />
         ))}

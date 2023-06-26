@@ -1,6 +1,7 @@
 import { BlogPostItem } from "@prisma/client";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
+import { BlogItemEditModal } from "../modal/BlogItemEditModal";
 
 interface Props {
   blogPostItem: BlogPostItem;
@@ -51,6 +52,7 @@ export default function BlogItemCard({ blogPostItem }: Props) {
           <p>{blogPostItem.subTitle}</p>
         </div>
         <div className="card-actions justify-end">
+          <BlogItemEditModal blogPostItem={blogPostItem} />
           <button onClick={deleteBlogPostItem} className="btn btn-error">
             <svg
               xmlns="http://www.w3.org/2000/svg"

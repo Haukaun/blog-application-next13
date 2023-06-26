@@ -107,9 +107,10 @@ export const BlogItemEditModal: React.FC<BlogItemModalProps> = ({
                 </label>
                 <label>
                   Url Path:
-                  <textarea
+                  <input
+                    type="text"
                     name="content"
-                    className="rounded-md p-2 mt-2 w-full h-40 bg-gray-100 text-base-100"
+                    className="rounded-md p-2 mt-2 w-full bg-gray-100 text-base-100"
                     placeholder={url}
                     onChange={(e) => setUrl(e.target.value)}
                   />
