@@ -4,7 +4,7 @@ import HeroPage from "@/components/LandingPage/HeroPage";
 
 export default function Home() {
   return (
-    <main className="">
+    <main>
       <div className="pb-32">
         <NavbarLinks />
       </div>

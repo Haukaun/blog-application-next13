@@ -3,11 +3,14 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "@/components/Navbar/NavBar";
 import "./globals.css";
-import { Roboto_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import Providers from "@/components/Providers";
 import Footer from "@/components/LandingPage/Footer";
 
-const Roboto = Roboto_Mono({ subsets: ["latin"] });
+const poppins = Poppins({
+  weight: ["400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -27,7 +30,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" data-theme={theme}>
-      <body className={Roboto.className}>
+      <body className={poppins.className}>
         <Providers>
           <div className="max-w-6xl m-auto">
             <div className="mx-10 flex flex-col min-h-screen">

@@ -65,6 +65,11 @@ const BlogPostPage = async ({ params }: Props) => {
       </p>
 
       <div className="mt-6 text-base space-y-4">{post?.content}</div>
+      <div className="flex flex-col">
+        {post.items.map((blogItem, index) => (
+          <div key={index}>{blogItem.title}</div>
+        ))}
+      </div>
     </div>
   );
 };
