@@ -1,6 +1,7 @@
 import React from "react";
 import { getAllPosts, getPostBySlug } from "@/lib/prisma/blogPostData";
 import { Metadata } from "next";
+import BlogItemCard from "@/components/blogPost/BlogItemCard";
 
 interface Props {
   params: {
@@ -65,9 +66,13 @@ const BlogPostPage = async ({ params }: Props) => {
       </p>
 
       <div className="mt-6 text-base space-y-4">{post?.content}</div>
-      <div className="flex flex-col">
+      <div className="divider"></div>
+      <div className="flex flex-col pt-5">
         {post.items.map((blogItem, index) => (
-          <div key={index}>{blogItem.title}</div>
+          <div key={index}>
+            <BlogItemCard blogPostItem={blogItem} />
+            <div className="divider"></div>
+          </div>
         ))}
       </div>
     </div>
