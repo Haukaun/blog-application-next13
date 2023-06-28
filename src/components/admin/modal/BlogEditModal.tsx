@@ -7,6 +7,7 @@ type BlogPost = {
   content: string;
   subTitle: string;
   slug: string;
+  metaDesc: string;
 };
 
 type BlogModalProps = {
@@ -18,6 +19,7 @@ export const BlogEditModal: React.FC<BlogModalProps> = ({ blogPost }) => {
   const [content, setContent] = useState(blogPost.content);
   const [subTitle, setSubTitle] = useState(blogPost.subTitle);
   const [slug, setSlug] = useState(blogPost.slug);
+  const [metaDesc, setMetaData] = useState(blogPost.metaDesc);
   const [isEditted, setIsEditted] = useState(false);
 
   const modalId = `my_blogpost_modal_${blogPost.id}`;
@@ -36,6 +38,7 @@ export const BlogEditModal: React.FC<BlogModalProps> = ({ blogPost }) => {
         title,
         subTitle,
         content,
+        metaDesc,
       }),
     });
 
@@ -116,6 +119,16 @@ export const BlogEditModal: React.FC<BlogModalProps> = ({ blogPost }) => {
                     className="rounded-md p-2 mt-2 w-full h-40 border"
                     placeholder={content}
                     onChange={(e) => setContent(e.target.value)}
+                  />
+                </label>
+                <label>
+                  MetaDescription:
+                  <input
+                    type="text"
+                    name="title"
+                    className="rounded-md p-2 mt-2 w-full border"
+                    placeholder={metaDesc}
+                    onChange={(e) => setMetaData(e.target.value)}
                   />
                 </label>
                 <input type="submit" value="Submit" className="btn" />

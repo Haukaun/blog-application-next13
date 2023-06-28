@@ -29,11 +29,15 @@ export default function RootLayout({
   }, [theme]);
 
   return (
-    <html lang="en" data-theme={theme}>
+    <html
+      lang="en"
+      data-theme={theme}
+      className="flex flex-col justify-center items-center"
+    >
       <body className={poppins.className}>
         <Providers>
-          <div className="max-w-5xl m-auto">
-            <div className="mx-10 flex flex-col min-h-screen">
+          <div className="max-w-5xl mx-5">
+            <div className="">
               <NavBar theme={theme} setTheme={setTheme} />
               {children}
               <div className="flex-grow"></div>

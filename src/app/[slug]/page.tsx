@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: blogPost.title,
-    description: blogPost.content,
+    description: blogPost.metaDesc,
     alternates: {
       canonical: `/${blogPost.slug}`,
       languages: {
@@ -59,9 +59,9 @@ const BlogPostPage = async ({ params }: Props) => {
       />
 
       <h1 className="mt-6 text-4xl font-bold">{post?.title}</h1>
-      <h2 className="mt-2 text-2xl">{post?.subTitle}</h2>
+      <h2 className="mt-4 text-2xl">{post?.subTitle}</h2>
 
-      <p className="mt-1 text-sm">
+      <p className="mt-3 text-sm">
         Author: {post?.user.name} on {post?.createdAt.toLocaleString()}
       </p>
 

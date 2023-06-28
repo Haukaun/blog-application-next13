@@ -9,7 +9,6 @@ export default function Home() {
         <NavbarLinks />
       </div>
       <HeroPage />
-      <h1 className="font-bold text-2xl">New blog posts</h1>
       <BlogCardList />
     </main>
   );

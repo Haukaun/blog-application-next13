@@ -5,7 +5,7 @@ interface BlogCardProps {
 const BlogCard = ({ blogPost }: BlogCardProps) => {
   const { title, subTitle, slug, image } = blogPost;
   return (
-    <div className="card shadow-xl">
+    <div className="card shadow-xl max-w-xs">
       <figure>
         <img src={image || "/testimage.jpeg"} alt={title} />
       </figure>
@@ -16,7 +16,7 @@ const BlogCard = ({ blogPost }: BlogCardProps) => {
         </h1>
         <p>{subTitle}</p>
 
-        <a href={"/blogPost/" + slug} className="btn btn-primary">
+        <a href={"/" + slug} className="btn btn-primary">
           Read more
         </a>
       </div>
