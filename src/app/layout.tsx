@@ -32,17 +32,14 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme={theme}
-      className="flex flex-col justify-center items-center"
+      className="flex flex-col min-h-screen items-center"
     >
-      <body className={poppins.className}>
+      <body className={poppins.className + "flex flex-col min-h-screen"}>
         <Providers>
-          <div className="max-w-5xl mx-5">
-            <div className="">
-              <NavBar theme={theme} setTheme={setTheme} />
-              {children}
-              <div className="flex-grow"></div>
-              <Footer />
-            </div>
+          <div className="max-w-5xl mx-5 flex flex-col min-h-screen">
+            <NavBar theme={theme} setTheme={setTheme} />
+            <div className="flex-grow">{children}</div>
+            <Footer />
           </div>
         </Providers>
       </body>

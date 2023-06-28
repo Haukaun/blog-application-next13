@@ -31,7 +31,7 @@ const BlogPostItemPage = async ({ params }: Props) => {
 
   if (blogItems.length === 0)
     return (
-      <div className="flex items-center justify-center flex-col">
+      <div className="flex items-center flex-col">
         <img src="/sad404.ffc1ba45.svg" alt="" />
         <div className="text-4xl font-color-100 pb-32">
           BLOG-ITEMS NOT FOUND
