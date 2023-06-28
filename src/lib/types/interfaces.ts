@@ -13,6 +13,7 @@ interface BlogPost {
   id: number;
   title: string;
   content: string;
+  metaDesc: string;
   published: boolean;
   slug: string;
   userId: number;

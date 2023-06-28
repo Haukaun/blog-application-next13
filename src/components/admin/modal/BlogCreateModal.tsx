@@ -6,6 +6,7 @@ export const BlogCreateModal = () => {
   const [content, setContent] = useState("");
   const [subTitle, setSubTitle] = useState("");
   const [slug, setSlug] = useState("");
+  const [metaDesc, setMetaData] = useState("");
 
   const { data: session } = useSession();
 
@@ -20,6 +21,7 @@ export const BlogCreateModal = () => {
         title,
         subTitle,
         content,
+        metaDesc,
         slug,
         userId: session?.user.id,
         image: "/testimage.jpeg",
@@ -69,6 +71,17 @@ export const BlogCreateModal = () => {
                     className="rounded-md p-2 mt-2 w-full border"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                  />
+                </label>
+                <label>
+                  MetaData:
+                  <input
+                    type="text"
+                    name="meta"
+                    required
+                    className="rounded-md p-2 mt-2 w-full border"
+                    value={metaDesc}
+                    onChange={(e) => setMetaData(e.target.value)}
                   />
                 </label>
                 <label>
