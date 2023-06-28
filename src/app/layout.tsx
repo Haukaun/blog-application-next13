@@ -36,7 +36,7 @@ export default function RootLayout({
     >
       <body className={poppins.className + "flex flex-col min-h-screen"}>
         <Providers>
-          <div className="max-w-5xl mx-5 flex flex-col min-h-screen">
+          <div className="max-w-4xl mx-5 flex flex-col min-h-screen">
             <NavBar theme={theme} setTheme={setTheme} />
             <div className="flex-grow">{children}</div>
             <Footer />
