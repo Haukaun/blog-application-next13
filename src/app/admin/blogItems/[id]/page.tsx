@@ -29,7 +29,7 @@ const BlogPostItemPage = async ({ params }: Props) => {
     }
   }, [params?.id]);
 
-  if (blogItems.length === 1)
+  if (blogItems.length === 0)
     return (
       <div className="flex items-center justify-center flex-col">
         <img src="/sad404.ffc1ba45.svg" alt="" />

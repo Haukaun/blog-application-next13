@@ -22,7 +22,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en" data-theme={theme}>
       <body className={poppins.className}>
         <Providers>
-          <div className="max-w-6xl m-auto">
+          <div className="max-w-5xl m-auto">
             <div className="mx-10 flex flex-col min-h-screen">
               <NavBar theme={theme} setTheme={setTheme} />
               {children}

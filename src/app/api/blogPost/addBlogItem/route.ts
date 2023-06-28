@@ -1,7 +1,6 @@
 ///add blogpostitem to blogpost
 import { verifyJwt } from "@/lib/jwt";
 import { prisma } from "@/lib/prisma";
-import { BlogPostItem } from "@/lib/types/interfaces";
 
 export async function POST(request: Request) {
   const accessToken = request.headers.get("Authorization");
@@ -21,12 +20,13 @@ export async function POST(request: Request) {
 
   const blogPostItem = await prisma.blogPostItem.create({
     data: {
-      title: body.blogPostItem.title,
-      content: body.blogPostItem.content,
-      blogpostId: body.blogPostItem.blogpostId,
-      image: body.blogPostItem.image,
-      subTitle: body.blogPostItem.subTitle,
-      urlPath: body.blogPostItem.urlPath,
+      title: body.title,
+      content: body.content,
+      blogpostId: body.blogpostId,
+      image: body.image,
+      subTitle: body.subTitle,
+      urlPath: body.urlPath,
+      subContent: body.subContent,
     },
   });
 

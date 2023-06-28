@@ -81,7 +81,7 @@ export const BlogItemEditModal: React.FC<BlogItemModalProps> = ({
                   <input
                     type="text"
                     name="title"
-                    className="rounded-md p-2 mt-2 w-full bg-gray-100 text-base-100"
+                    className="rounded-md p-2 mt-2 w-full border"
                     placeholder={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
@@ -91,7 +91,7 @@ export const BlogItemEditModal: React.FC<BlogItemModalProps> = ({
                   <input
                     type="text"
                     name="subTitle"
-                    className="rounded-md p-2 mt-2 w-full bg-gray-100 text-base-100"
+                    className="rounded-md p-2 mt-2 w-full border"
                     placeholder={subTitle}
                     onChange={(e) => setSubTitle(e.target.value)}
                   />
@@ -100,7 +100,7 @@ export const BlogItemEditModal: React.FC<BlogItemModalProps> = ({
                   Content:
                   <textarea
                     name="content"
-                    className="rounded-md p-2 mt-2 w-full h-40 bg-gray-100 text-base-100"
+                    className="rounded-md p-2 mt-2 w-full h-40 border"
                     placeholder={content}
                     onChange={(e) => setContent(e.target.value)}
                   />
@@ -110,7 +110,7 @@ export const BlogItemEditModal: React.FC<BlogItemModalProps> = ({
                   <input
                     type="text"
                     name="content"
-                    className="rounded-md p-2 mt-2 w-full bg-gray-100 text-base-100"
+                    className="rounded-md p-2 mt-2 w-full border"
                     placeholder={url}
                     onChange={(e) => setUrl(e.target.value)}
                   />

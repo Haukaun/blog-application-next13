@@ -35,7 +35,7 @@ const BlogCardLong = ({ blogPost }: Props) => {
   return (
     <div className="card card-side bg-base-100 shadow-xl">
       <figure className="relative">
-        <a href={"/blogPost/" + blogPost.slug}>
+        <a href={"/" + blogPost.slug}>
           <img
             className="w-64 h-32 object-cover object-center"
             src={blogPost.image || "/testimage.jpeg"}

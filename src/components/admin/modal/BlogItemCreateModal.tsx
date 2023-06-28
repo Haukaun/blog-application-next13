@@ -10,6 +10,7 @@ export const BlogItemCreateModal = ({ blogPostId }: Props) => {
   const [content, setContent] = useState("");
   const [subTitle, setSubTitle] = useState("");
   const [urlPath, setUrlPath] = useState("");
+  const [subContent, setSubContent] = useState("");
 
   const { data: session } = useSession();
 
@@ -21,15 +22,14 @@ export const BlogItemCreateModal = ({ blogPostId }: Props) => {
         authorization: ` ${session?.user.accessToken}`,
       },
       body: JSON.stringify({
-        blogPostItem: {
-          title,
-          subTitle,
-          content,
-          blogpostId: blogPostId,
-          urlPath,
-          userId: session?.user.id,
-          image: "/testimage.jpeg",
-        },
+        title,
+        subTitle,
+        content,
+        blogpostId: blogPostId,
+        urlPath,
+        subContent,
+        userId: session?.user.id,
+        image: "/testimage.jpeg",
       }),
     });
 
@@ -75,7 +75,7 @@ export const BlogItemCreateModal = ({ blogPostId }: Props) => {
                     type="text"
                     name="slug"
                     required
-                    className="p-2 mt-2 w-full bg-gray-100 text-base-100"
+                    className="rounded-md p-2 mt-2 w-full border"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
@@ -86,7 +86,7 @@ export const BlogItemCreateModal = ({ blogPostId }: Props) => {
                     type="text"
                     name="subTitle"
                     required
-                    className="p-2 mt-2 w-full bg-gray-100 text-base-100"
+                    className="rounded-md p-2 mt-2 w-full border"
                     value={subTitle}
                     onChange={(e) => setSubTitle(e.target.value)}
                   />
@@ -96,9 +96,19 @@ export const BlogItemCreateModal = ({ blogPostId }: Props) => {
                   <textarea
                     name="content"
                     required
-                    className=" p-2 mt-2 w-full h-40 bg-gray-100 text-base-100"
+                    className="rounded-md p-2 mt-2 w-full h-40 border"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
+                  />
+                </label>
+                <label>
+                  Sub-content:
+                  <textarea
+                    name="content"
+                    required
+                    className="rounded-md p-2 mt-2 w-full h-40 border"
+                    value={subContent}
+                    onChange={(e) => setSubContent(e.target.value)}
                   />
                 </label>
                 <label>
@@ -107,7 +117,7 @@ export const BlogItemCreateModal = ({ blogPostId }: Props) => {
                     type="text"
                     name="title"
                     required
-                    className="p-2 mt-2 w-full bg-gray-100 text-base-100"
+                    className="rounded-md p-2 mt-2 w-full border"
                     value={urlPath}
                     onChange={(e) => setUrlPath(e.target.value)}
                   />

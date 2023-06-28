@@ -6,6 +6,7 @@ interface BlogPostItem {
   image: string | null;
   subTitle: string;
   urlPath: string;
+  subContent: string;
 }
 
 interface BlogPost {
@@ -18,5 +19,5 @@ interface BlogPost {
   createdAt: Date;
   image: string | null;
   subTitle: string;
-  items: BlogPostItem[]; // Add this line
+  items: BlogPostItem[];
 }

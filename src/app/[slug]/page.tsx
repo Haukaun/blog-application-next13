@@ -21,9 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: blogPost.title,
     description: blogPost.content,
     alternates: {
-      canonical: `/post/${blogPost.slug}`,
+      canonical: `/${blogPost.slug}`,
       languages: {
-        "en-CA": `en-CA/post/${blogPost.slug}`,
+        "en-CA": `en-CA/${blogPost.slug}`,
       },
     },
   };
@@ -67,6 +67,7 @@ const BlogPostPage = async ({ params }: Props) => {
 
       <div className="mt-6 text-base space-y-4">{post?.content}</div>
       <div className="divider"></div>
+
       <div className="flex flex-col pt-5">
         {post.items.map((blogItem, index) => (
           <div key={index}>

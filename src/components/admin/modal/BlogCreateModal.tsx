@@ -17,14 +17,12 @@ export const BlogCreateModal = () => {
         authorization: ` ${session?.user.accessToken}`,
       },
       body: JSON.stringify({
-        blogPost: {
-          title,
-          subTitle,
-          content,
-          slug,
-          userId: session?.user.id,
-          image: "/testimage.jpeg",
-        },
+        title,
+        subTitle,
+        content,
+        slug,
+        userId: session?.user.id,
+        image: "/testimage.jpeg",
       }),
     });
 
@@ -57,7 +55,7 @@ export const BlogCreateModal = () => {
                     type="text"
                     name="slug"
                     required
-                    className="p-2 mt-2 w-full bg-gray-100 text-base-100"
+                    className="rounded-md p-2 mt-2 w-full border"
                     value={slug}
                     onChange={(e) => setSlug(e.target.value)}
                   />
@@ -68,7 +66,7 @@ export const BlogCreateModal = () => {
                     type="text"
                     name="title"
                     required
-                    className="p-2 mt-2 w-full bg-gray-100 text-base-100"
+                    className="rounded-md p-2 mt-2 w-full border"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
@@ -79,7 +77,7 @@ export const BlogCreateModal = () => {
                     type="text"
                     name="subTitle"
                     required
-                    className="p-2 mt-2 w-full bg-gray-100 text-base-100"
+                    className="rounded-md p-2 mt-2 w-full border"
                     value={subTitle}
                     onChange={(e) => setSubTitle(e.target.value)}
                   />
@@ -89,7 +87,7 @@ export const BlogCreateModal = () => {
                   <textarea
                     name="content"
                     required
-                    className=" p-2 mt-2 w-full h-40 bg-gray-100 text-base-100"
+                    className="rounded-md p-2 mt-2 w-full h-40 border"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                   />
