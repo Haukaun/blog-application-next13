@@ -22,7 +22,7 @@ export default async function BlogCardList() {
 
   return (
     <div className="">
-      <h1 className="font-bold text-2xl my-10">New blog posts</h1>
+      <h1 className="font-bold text-2xl my-10">Latest posts</h1>
       {blogs.map((blog, index) => (
         <div
           key={index}
