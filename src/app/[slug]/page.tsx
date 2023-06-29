@@ -51,7 +51,7 @@ const BlogPostPage = async ({ params }: Props) => {
     );
 
   return (
-    <div className="mx-10">
+    <div>
       <img
         src={post?.image || undefined}
         alt={post?.title}
